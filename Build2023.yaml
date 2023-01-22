@@ -197,7 +197,7 @@ Children:
           name: xbox
           parameters:
           - {name: left, type: DoubleSupplier, value: () -> getm_xbox().getLeftY()}
-          - {name: right, type: DoubleSupplier, value: () -> getm_xbox().getRightY()*-1}
+          - {name: right, type: DoubleSupplier, value: () -> getm_xbox().getLeftX()}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
@@ -223,9 +223,9 @@ Properties:
       Number, validators: null, value: 2342}
   Export Subsystems: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Subsystems, validators: null, value: true}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\dlafl\',
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Nicole\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: .\}
-  Export Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\dlafl\FRCProjects',
+  Export Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Nicole\FRCProjects',
     extension: null, folder: true, name: Export Directory, validators: null, value: .\}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
