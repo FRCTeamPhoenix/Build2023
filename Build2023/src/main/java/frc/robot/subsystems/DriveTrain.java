@@ -96,6 +96,10 @@ drive.setMaxOutput(1.0);
 
     }
 
+    public void Drive(double left, double right){
+        drive.tankDrive(left, right);
+    }
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
