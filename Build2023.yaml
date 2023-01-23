@@ -121,9 +121,9 @@ Children:
         validators: null
         value:
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: left, type: DoubleSupplier,
-          value: () -> getm_xbox().getLeftY()}
+          value: () -> getm_xbox().getRawAxis(3)*-1}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: right, type: DoubleSupplier,
-          value: () -> getm_xbox().getRightY()}
+          value: () -> getm_xbox().getRawAxis(4)*-1}
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: TankDrive}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
@@ -196,8 +196,8 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: xbox
           parameters:
-          - {name: left, type: DoubleSupplier, value: () -> getm_xbox().getLeftY()}
-          - {name: right, type: DoubleSupplier, value: () -> getm_xbox().getLeftX()}
+          - {name: left, type: DoubleSupplier, value: () -> getm_xbox().getRawAxis(3)*-1}
+          - {name: right, type: DoubleSupplier, value: () -> getm_xbox().getRawAxis(4)*-1}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
