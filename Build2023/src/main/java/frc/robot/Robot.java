@@ -18,6 +18,7 @@ import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.IntakeControl;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,6 +32,8 @@ public class Robot extends TimedRobot {
     private Command m_autonomousCommand;
 
     private RobotContainer m_robotContainer;
+
+    private IntakeControl m_intakeControl;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -58,11 +61,18 @@ public class Robot extends TimedRobot {
         // and running subsystem periodic() methods.  This must be called from the robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
-        if (m_robotContainer.getXboxController().getRightTriggerAxis() > 0.01) {
+        if (m_robotContainer.getXboxControllerDriver().getRightTriggerAxis() > 0.01) {
             m_robotContainer.getDriveTrain().setTurbo(true);
         }
         else {
             m_robotContainer.getDriveTrain().setTurbo(false);
+        }
+        if (m_robotContainer.getXboxControllerOperator().getRightTriggerAxis() > 0.01) {
+            m_intakeControl.takeGamePiece();
+        } else if (m_robotContainer.getXboxControllerOperator().getLeftTriggerAxis() > 0.01) {
+            m_intakeControl.ejectGamePiece();
+        } else {
+            m_intakeControl.end(true);
         }
     }
 

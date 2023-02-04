@@ -121,9 +121,9 @@ Children:
         validators: null
         value:
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: speed, type: DoubleSupplier,
-          value: () -> getm_xbox().getLeftY()}
+          value: () -> getxbox_driver().getLeftY()}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: rotation,
-          type: DoubleSupplier, value: () -> getm_xbox().getRightX()}
+          type: DoubleSupplier, value: () -> getxbox_driver().getRightX()}
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: ArcadeDrive}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
@@ -137,36 +137,41 @@ Children:
     - Children:
       - Children: []
         Properties:
-          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-            choices: &id005 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-              '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
-            default: '2'
-            name: CAN ID
-            validators: &id006 [CANID, DistinctValidator]
-            value: '5'
-          Motor Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: &id007 [Brushless, Brushed]
-            default: Brushless
-            name: Motor Type
-            validators: &id008 [ChildDropdownSelected]
-            value: Brushless
-        Base: CAN SparkMAX
+          Type: !!robotbuilder.data.properties.ChoicesProperty
+            choices: &id005 [Victor, Jaguar, Talon, VictorSP, PWMTalonSRX, Spark,
+              SD540, PWMVictorSPX, DMC60, PWMSparkMax, PWMTalonFX, PWMVenom]
+            default: PWMVictorSPX
+            name: Type
+            validators: null
+            value: PWMSparkMax
+          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+            choices: &id006 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+              '11', '12', '13', '14', '15', '16', '17', '18', '19']
+            default: '0'
+            name: Output Channel (PWM)
+            validators: &id007 [PWMOutput]
+            value: '0'
+          Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
+            name: Inverted, validators: null, value: false}
+        Base: Motor Controller
         Name: sm_intake1
       - Children: []
         Properties:
-          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          Type: !!robotbuilder.data.properties.ChoicesProperty
             choices: *id005
-            default: '2'
-            name: CAN ID
-            validators: *id006
-            value: '6'
-          Motor Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id007
-            default: Brushless
-            name: Motor Type
-            validators: *id008
-            value: Brushless
-        Base: CAN SparkMAX
+            default: PWMVictorSPX
+            name: Type
+            validators: null
+            value: PWMSparkMax
+          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id006
+            default: '0'
+            name: Output Channel (PWM)
+            validators: *id007
+            value: '1'
+          Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
+            name: Inverted, validators: null, value: false}
+        Base: Motor Controller
         Name: sm_intake2
       Properties:
         MotorController2: !!robotbuilder.data.properties.ChildSelectionProperty
@@ -213,13 +218,23 @@ Children:
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: ['0', '1', '2', '3', '4', '5']
+        choices: &id008 ['0', '1', '2', '3', '4', '5']
         default: 1
         name: Number
-        validators: [Joystick]
+        validators: &id009 [Joystick]
         value: '0'
     Base: Xbox Controller
-    Name: m_xbox
+    Name: xbox_driver
+  - Children: []
+    Properties:
+      Number: !!robotbuilder.data.properties.ChoicesProperty
+        choices: *id008
+        default: 1
+        name: Number
+        validators: *id009
+        value: '1'
+    Base: Xbox Controller
+    Name: xbox_operator
   Properties: {}
   Base: OI
   Name: Operator Interface
@@ -269,12 +284,40 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: xbox
           parameters:
-          - {name: left, type: DoubleSupplier, value: () -> getm_xbox().getLeftY()}
-          - {name: right, type: DoubleSupplier, value: () -> getm_xbox().getRightX()}
+          - {name: speed, type: DoubleSupplier, value: () -> getxbox_driver().getLeftY()}
+          - {name: rotation, type: DoubleSupplier, value: () -> getxbox_driver().getRightX()}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: ArcadeDrive
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value:
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: intake_speed,
+          type: double}
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Intake}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id010
+        - !!robotbuilder.data.properties.ParameterSet
+          name: speed
+          parameters:
+          - {name: intake_speed, type: double, value: '0'}
+        name: Parameter presets
+        validators: null
+        value: *id010
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: IntakeControl
   Properties: {}
   Base: Commands
   Name: Commands
