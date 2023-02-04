@@ -133,6 +133,79 @@ Children:
         value: []
     Base: Subsystem
     Name: DriveTrain
+  - Children:
+    - Children:
+      - Children: []
+        Properties:
+          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+            choices: &id005 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+              '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
+            default: '2'
+            name: CAN ID
+            validators: &id006 [CANID, DistinctValidator]
+            value: '5'
+          Motor Type: !!robotbuilder.data.properties.ChoicesProperty
+            choices: &id007 [Brushless, Brushed]
+            default: Brushless
+            name: Motor Type
+            validators: &id008 [ChildDropdownSelected]
+            value: Brushless
+        Base: CAN SparkMAX
+        Name: sm_intake1
+      - Children: []
+        Properties:
+          CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id005
+            default: '2'
+            name: CAN ID
+            validators: *id006
+            value: '6'
+          Motor Type: !!robotbuilder.data.properties.ChoicesProperty
+            choices: *id007
+            default: Brushless
+            name: Motor Type
+            validators: *id008
+            value: Brushless
+        Base: CAN SparkMAX
+        Name: sm_intake2
+      Properties:
+        MotorController2: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 1
+          name: MotorController2
+          type: PIDOutput
+          validators: *id003
+          value: sm_intake2
+        MotorController1: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 0
+          name: MotorController1
+          type: PIDOutput
+          validators: *id004
+          value: sm_intake1
+        MotorController4: !!robotbuilder.data.properties.ChildSelectionProperty {
+          default: null, name: MotorController4, type: PIDOutput, validators: null,
+          value: null}
+        MotorController3: !!robotbuilder.data.properties.ChildSelectionProperty {
+          default: null, name: MotorController3, type: PIDOutput, validators: null,
+          value: null}
+      Base: Motor Controller Group
+      Name: mg_intake
+    Properties:
+      Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Send to SmartDashboard, validators: null, value: false}
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: []
+    Base: Subsystem
+    Name: Intake
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -223,9 +296,9 @@ Properties:
       Number, validators: null, value: 2342}
   Export Subsystems: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Subsystems, validators: null, value: true}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\slafl\',
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Nicole\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: .\}
-  Export Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\slafl\FRCProjects',
+  Export Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Nicole\FRCProjects',
     extension: null, folder: true, name: Export Directory, validators: null, value: .\}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
