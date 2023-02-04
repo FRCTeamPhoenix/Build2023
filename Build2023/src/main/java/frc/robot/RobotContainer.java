@@ -134,5 +134,8 @@ public XboxController getxbox_operator() {
   public XboxController getXboxControllerOperator() {
     return xbox_operator;
   }
+  public Intake getIntake() {
+    return m_intake;
+  }
 }
 

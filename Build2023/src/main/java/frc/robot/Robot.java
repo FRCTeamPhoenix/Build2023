@@ -18,7 +18,7 @@ import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.IntakeControl;
+import frc.robot.subsystems.Intake;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
 
     private RobotContainer m_robotContainer;
 
-    private IntakeControl m_intakeControl;
+    private Intake m_intake;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -45,6 +45,7 @@ public class Robot extends TimedRobot {
         // autonomous chooser on the dashboard.
         m_robotContainer = RobotContainer.getInstance();
         HAL.report(tResourceType.kResourceType_Framework, tInstances.kFramework_RobotBuilder);
+        m_intake = m_robotContainer.getIntake();
     }
 
     /**
@@ -68,11 +69,11 @@ public class Robot extends TimedRobot {
             m_robotContainer.getDriveTrain().setTurbo(false);
         }
         if (m_robotContainer.getXboxControllerOperator().getRightTriggerAxis() > 0.01) {
-            m_intakeControl.takeGamePiece();
+            m_intake.takeGamePiece();
         } else if (m_robotContainer.getXboxControllerOperator().getLeftTriggerAxis() > 0.01) {
-            m_intakeControl.ejectGamePiece();
+            m_intake.ejectGamePiece();
         } else {
-            m_intakeControl.end(true);
+            m_intake.intakeStop();
         }
     }
 
