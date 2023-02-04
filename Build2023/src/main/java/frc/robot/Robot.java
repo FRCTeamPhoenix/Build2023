@@ -58,12 +58,12 @@ public class Robot extends TimedRobot {
         // and running subsystem periodic() methods.  This must be called from the robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
-        if(m_robotContainer.getXboxController().getRightTriggerAxis() > 0.01){
+        if (m_robotContainer.getXboxController().getRightTriggerAxis() > 0.01) {
             m_robotContainer.getDriveTrain().setTurbo(true);
-          }
-          else {
+        }
+        else {
             m_robotContainer.getDriveTrain().setTurbo(false);
-          }
+        }
     }
 
 
