@@ -52,7 +52,7 @@ sm_motor_right = new CANSparkMax(20, MotorType.kBrushless);
  
  sm_motor_right.restoreFactoryDefaults();  
 sm_motor_right.setInverted(false);
-sm_motor_right.setIdleMode(IdleMode.kCoast);
+sm_motor_right.setIdleMode(IdleMode.kBrake);
 sm_motor_right.burnFlash();
   
 
@@ -60,7 +60,7 @@ sm_motor_left = new CANSparkMax(21, MotorType.kBrushless);
  
  sm_motor_left.restoreFactoryDefaults();  
 sm_motor_left.setInverted(true);
-sm_motor_left.setIdleMode(IdleMode.kCoast);
+sm_motor_left.setIdleMode(IdleMode.kBrake);
 sm_motor_left.burnFlash();
   
 

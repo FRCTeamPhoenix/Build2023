@@ -62,18 +62,33 @@ public class Robot extends TimedRobot {
         // and running subsystem periodic() methods.  This must be called from the robot's periodic
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
+        //Turbo
         if (m_robotContainer.getXboxControllerDriver().getRightTriggerAxis() > 0.01) {
             m_robotContainer.getDriveTrain().setTurbo(true);
         }
         else {
             m_robotContainer.getDriveTrain().setTurbo(false);
         }
-        if (m_robotContainer.getXboxControllerOperator().getRightTriggerAxis() > 0.01) {
-            m_intake.takeGamePiece();
-        } else if (m_robotContainer.getXboxControllerOperator().getLeftTriggerAxis() > 0.01) {
+        //Gamepiece Control
+        if (m_robotContainer.getXboxControllerOperator().getLeftTriggerAxis() > 0.01) {
             m_intake.ejectGamePiece();
+        } else if (m_robotContainer.getXboxControllerOperator().getRightTriggerAxis() > 0.01) {
+            m_intake.takeGamePiece(); 
         } else {
             m_intake.intakeStop();
+        }
+        //Arm control
+        double extend_y = m_robotContainer.getxbox_operator().getLeftY();
+        if ((extend_y > 0.1) || (extend_y < -0.1)) {
+            m_robotContainer.getArm().inOut(extend_y);
+        } else {
+            m_robotContainer.getArm().inOut(0.0);
+        }
+        double lift_y = m_robotContainer.getxbox_operator().getRightY();
+        if ((lift_y > 0.1) || (lift_y < -0.1)) {
+            m_robotContainer.getArm().upDown(lift_y);
+        } else {
+            m_robotContainer.getArm().upDown(0.0);
         }
     }
 
