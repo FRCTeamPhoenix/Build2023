@@ -101,8 +101,8 @@ sm_motor_extend.burnFlash();
     kD_extend = 0; 
     kIz_extend = 0; 
     kFF_extend = 0.000015; 
-    kMaxOutput_extend = 1; 
-    kMinOutput_extend = -1;
+    kMaxOutput_extend = 1.25; 
+    kMinOutput_extend = -1.25;
     maxRPM_extend = 6500;
 
     // set PID coefficients
@@ -139,7 +139,7 @@ sm_motor_extend.burnFlash();
         mg_intake.set(intakeSpeed);
     }*/
     public void upDown(double speed){
-        double setPoint = speed*maxRPM_lift;
+        double setPoint = -1*speed*maxRPM_lift;
         m_lift_pidController.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
     
     SmartDashboard.putNumber("SetPointLift", setPoint);
