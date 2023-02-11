@@ -69,14 +69,14 @@ public class Robot extends TimedRobot {
         else {
             m_robotContainer.getDriveTrain().setTurbo(false);
         }
-        //Gamepiece Control
-        if (m_robotContainer.getXboxControllerOperator().getLeftTriggerAxis() > 0.01) {
+        //Gamepiece Control - Plan B
+        /* if (m_robotContainer.getXboxControllerOperator().getLeftTriggerAxis() > 0.01) {
             m_intake.ejectGamePiece();
         } else if (m_robotContainer.getXboxControllerOperator().getRightTriggerAxis() > 0.01) {
             m_intake.takeGamePiece(); 
         } else {
             m_intake.intakeStop();
-        }
+        } */
         //Arm control
         double extend_y = m_robotContainer.getxbox_operator().getLeftY();
         if ((extend_y > 0.1) || (extend_y < -0.1)) {

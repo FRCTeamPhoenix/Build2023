@@ -299,7 +299,7 @@ Children:
             default: '2'
             name: CAN ID
             validators: &id010 [CANID]
-            value: '20'
+            value: '22'
           MOTOR TYPE: !!robotbuilder.data.properties.ChoicesProperty
             choices: &id011 [kBrushless, kBrushed]
             default: kBrushless
@@ -390,7 +390,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id010
-          value: '23'
+          value: '24'
         MOTOR TYPE: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id011
           default: kBrushless
@@ -416,7 +416,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id010
-          value: '24'
+          value: '23'
         MOTOR TYPE: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id011
           default: kBrushless

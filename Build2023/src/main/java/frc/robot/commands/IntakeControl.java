@@ -62,6 +62,7 @@ public class IntakeControl extends CommandBase {
         } else if (m_intake_speed < -0.1) {
             m_intake.ejectGamePiece();
         } else {
+            m_intake.intakeStop();
             finished = true;
         }
     }
