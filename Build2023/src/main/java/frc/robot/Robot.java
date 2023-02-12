@@ -18,7 +18,7 @@ import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Intake; 
 import edu.wpi.first.cameraserver.CameraServer;
 
 /**
@@ -65,22 +65,14 @@ public class Robot extends TimedRobot {
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
         //Turbo
-        if (m_robotContainer.getXboxControllerDriver().getRightTriggerAxis() > 0.01) {
+        if (m_robotContainer.getxbox_driver().getRightTriggerAxis() > 0.01) {
             m_robotContainer.getDriveTrain().setTurbo(true);
         }
         else {
             m_robotContainer.getDriveTrain().setTurbo(false);
         }
-        //Gamepiece Control - Plan B
-        /* if (m_robotContainer.getXboxControllerOperator().getLeftTriggerAxis() > 0.01) {
-            m_intake.ejectGamePiece();
-        } else if (m_robotContainer.getXboxControllerOperator().getRightTriggerAxis() > 0.01) {
-            m_intake.takeGamePiece(); 
-        } else {
-            m_intake.intakeStop();
-        } */
         //Arm control
-        double extend_y = m_robotContainer.getxbox_operator().getLeftY();
+        /*double extend_y = m_robotContainer.getxbox_operator().getLeftY();
         if ((extend_y > 0.1) || (extend_y < -0.1)) {
             m_robotContainer.getArm().inOut(extend_y);
         } else {
@@ -91,7 +83,7 @@ public class Robot extends TimedRobot {
             m_robotContainer.getArm().upDown(lift_y);
         } else {
             m_robotContainer.getArm().upDown(0.0);
-        }
+        } */
     }
 
 

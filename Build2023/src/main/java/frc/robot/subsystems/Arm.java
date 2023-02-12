@@ -30,8 +30,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Arm extends SubsystemBase {
-    private double liftLimitSwitch = 1; //PLACEHOLDER
-    private double retractLimitSwitch = 1; 
+    private double liftLimitSwitch = 40; //PLACEHOLDER
+    private double retractLimitSwitch = 40; 
     //private boolean doneResetting = false;
     private SparkMaxPIDController m_lift_pidController, m_extend_pidController;
     private RelativeEncoder m_lift_encoder, m_extend_encoder;
@@ -143,15 +143,17 @@ sm_motor_extend.burnFlash();
     }*/
 
     public void upDown(double speed){
-        double setPoint = -1*speed*maxRPM_lift; 
-        if (sm_motor_lift.getOutputCurrent() < liftLimitSwitch) {
+        double setPoint = speed*maxRPM_lift; 
+        if (!atTop()) {
             m_lift_pidController.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
+        } else {
+            sm_motor_lift.stopMotor();
         }
     
         SmartDashboard.putNumber("SetPointLift", setPoint);
         SmartDashboard.putNumber("SpeedLift", m_lift_encoder.getVelocity());
         SmartDashboard.putNumber("LiftPosition", m_lift_encoder.getPosition());
-        SmartDashboard.putNumber("LimitCurrent", sm_motor_lift.getOutputCurrent());
+        SmartDashboard.putNumber("LiftCurrent", sm_motor_lift.getOutputCurrent());
     }
     //public void reset() {
         //if(!doneResetting) {
@@ -166,18 +168,23 @@ sm_motor_extend.burnFlash();
         }
     }
     public boolean retracted () {
-        if (sm_motor_extend.getOutputCurrent() > retractLimitSwitch)
+        if (sm_motor_extend.getOutputCurrent() > retractLimitSwitch) {
             return true;
-        return false;
+        } else {
+            return false;
+        }
     }
     public void inOut(double speed){
         double setPoint = speed*maxRPM_extend;
-        m_extend_pidController.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
-    
+        if (!retracted()) {
+            m_extend_pidController.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
+        } else {
+            sm_motor_extend.stopMotor();
+        }
         SmartDashboard.putNumber("SetPointExtend", setPoint);
         SmartDashboard.putNumber("SpeedExtend", m_extend_encoder.getVelocity());
         SmartDashboard.putNumber("ExtendPosition", m_extend_encoder.getPosition());
-        SmartDashboard.putNumber("ExtendCurrent", sm_motor_extend.getOutputCurrent());
+        SmartDashboard.putNumber("Retract Current", sm_motor_extend.getOutputCurrent());
     }
     public void setLiftEncoder() {
         m_lift_encoder.setPosition(0);
