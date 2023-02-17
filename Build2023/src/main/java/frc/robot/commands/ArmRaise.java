@@ -57,7 +57,7 @@ public class ArmRaise extends CommandBase {
     @Override
     public void execute() {
         if (m_b_raise) {
-            m_arm.upDown(.25);
+            m_arm.upDown(1);
         } else {
             m_arm.upDown(0);
         }

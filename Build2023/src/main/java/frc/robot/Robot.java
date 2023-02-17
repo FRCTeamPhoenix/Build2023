@@ -16,6 +16,7 @@ import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
 import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.event.EventLoop;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.ResetArm;
@@ -71,6 +72,9 @@ public class Robot extends TimedRobot {
         }
         else {
             m_robotContainer.getDriveTrain().setTurbo(false);
+        }
+        if(m_robotContainer.getxbox_operator().getPOV() == 0) {
+            m_robotContainer.getArm().setStartPosition();
         }
         //Arm control
         /*double extend_y = m_robotContainer.getxbox_operator().getLeftY();

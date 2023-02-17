@@ -55,7 +55,7 @@ public class ArmLower extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_arm.upDown(-.25);
+        m_arm.upDown(-1);
     }
 
     // Called once the command ends or is interrupted.

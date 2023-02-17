@@ -77,11 +77,11 @@ sm_motor_extend.burnFlash();
 
 
     // PID coefficients
-    kP_lift = 6e-5; 
+    kP_lift = 1.2e-4; 
     kI_lift = 0;
     kD_lift = 0; 
     kIz_lift = 0; 
-    kFF_lift = 0.00015; 
+    kFF_lift = 0.0003; 
     kMaxOutput_lift = 1; 
     kMinOutput_lift = -1;
     maxRPM_lift = 6500;
@@ -101,11 +101,11 @@ sm_motor_extend.burnFlash();
     m_extend_encoder = sm_motor_extend.getEncoder();
 
     // PID coefficients
-    kP_extend = 6e-5; 
+    kP_extend = 1.2e-4; 
     kI_extend = 0;
     kD_extend = 0; 
     kIz_extend = 0; 
-    kFF_extend = 0.000015; 
+    kFF_extend = 0.0003; 
     kMaxOutput_extend = 1.25; 
     kMinOutput_extend = -1.25;
     maxRPM_extend = 6500;
@@ -207,6 +207,25 @@ sm_motor_extend.burnFlash();
     }
     public void setRetractEncoder() {
         m_extend_encoder.setPosition(0);
+    }
+
+    public boolean setStartPosition() {
+        if (m_lift_encoder.getPosition() < 0) {
+            upDown(1);
+        }
+        if (m_extend_encoder.getPosition() > 0) {
+            inOut(-1);
+        }
+        if (m_lift_encoder.getPosition() >= 0 && m_extend_encoder.getPosition() <= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void overrideEncoders() {
+        m_lift_encoder.setPosition(-1000);
+        m_extend_encoder.setPosition(1000);
     }
 }
 
