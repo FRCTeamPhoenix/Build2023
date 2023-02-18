@@ -227,5 +227,18 @@ sm_motor_extend.burnFlash();
         m_lift_encoder.setPosition(-1000);
         m_extend_encoder.setPosition(1000);
     }
+
+    public boolean liftToScorePosition() {
+        if (m_lift_encoder.getPosition() > -95 && m_lift_encoder.getPosition() < -97) {
+            upDown(1);
+        } else if (m_extend_encoder.getPosition() < extendMaximum) {
+            inOut(1);
+        }
+        if ((m_lift_encoder.getPosition() <= -95 && m_lift_encoder.getPosition() >= -97) && m_extend_encoder.getPosition() >= extendMaximum) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
