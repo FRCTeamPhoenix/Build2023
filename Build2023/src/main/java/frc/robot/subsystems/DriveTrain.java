@@ -120,7 +120,7 @@ backRight.configNominalOutputForward(0, 30);
 backRight.configNominalOutputReverse(0, 30);
 backRight.configPeakOutputForward(1, 30);
 backRight.configPeakOutputReverse(-1, 30);
-        
+
 
 
 mg_right = new MotorControllerGroup(frontRight, backRight  );
@@ -139,6 +139,10 @@ drive.setMaxOutput(1.0);
 
     backRight.follow(frontRight);
     backLeft.follow(frontLeft);
+    frontLeft.configClosedloopRamp(.5);
+    frontRight.configClosedloopRamp(.5);
+    backLeft.configClosedloopRamp(.5);
+    backRight.configClosedloopRamp(.5);
     }
 
     @Override
