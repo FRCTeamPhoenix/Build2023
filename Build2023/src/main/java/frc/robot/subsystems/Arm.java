@@ -229,12 +229,27 @@ sm_motor_extend.burnFlash();
     }
 
     public boolean liftToScorePosition() {
-        if (m_lift_encoder.getPosition() > -95 && m_lift_encoder.getPosition() < -97) {
+        if (m_lift_encoder.getPosition() > -95) {
+            upDown(-1);
+        } else if (m_lift_encoder.getPosition() < -97) {
             upDown(1);
         } else if (m_extend_encoder.getPosition() < extendMaximum) {
             inOut(1);
         }
         if ((m_lift_encoder.getPosition() <= -95 && m_lift_encoder.getPosition() >= -97) && m_extend_encoder.getPosition() >= extendMaximum) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean toCubePosition() {
+        if (m_lift_encoder.getPosition() > lowerMaximum) {
+            upDown(-1);
+        } else if (m_extend_encoder.getPosition() > 0) {
+            inOut(-1);
+        }
+        if (m_lift_encoder.getPosition() <= lowerMaximum && m_extend_encoder.getPosition() <= 0) {
             return true;
         } else {
             return false;
