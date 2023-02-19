@@ -60,7 +60,7 @@ frontLeft.configFactoryDefault();
 
         /* Invert Motor? and set Break Mode */
 frontLeft.setInverted(false);
-frontLeft.setNeutralMode(NeutralMode.Brake);
+frontLeft.setNeutralMode(NeutralMode.Coast);
 
         /* Set the peak and nominal outputs */
 frontLeft.configNominalOutputForward(0, 30);
@@ -77,7 +77,7 @@ backLeft.configFactoryDefault();
 
         /* Invert Motor? and set Break Mode */
 backLeft.setInverted(false);
-backLeft.setNeutralMode(NeutralMode.Brake);
+backLeft.setNeutralMode(NeutralMode.Coast);
 
         /* Set the peak and nominal outputs */
 backLeft.configNominalOutputForward(0, 30);
@@ -98,7 +98,7 @@ frontRight.configFactoryDefault();
 
         /* Invert Motor? and set Break Mode */
 frontRight.setInverted(true);
-frontRight.setNeutralMode(NeutralMode.Brake);
+frontRight.setNeutralMode(NeutralMode.Coast);
 
         /* Set the peak and nominal outputs */
 frontRight.configNominalOutputForward(0, 30);
@@ -115,7 +115,7 @@ backRight.configFactoryDefault();
 
         /* Invert Motor? and set Break Mode */
 backRight.setInverted(true);
-backRight.setNeutralMode(NeutralMode.Brake);
+backRight.setNeutralMode(NeutralMode.Coast);
 
         /* Set the peak and nominal outputs */
 backRight.configNominalOutputForward(0, 30);
@@ -163,18 +163,6 @@ drive.setMaxOutput(1.0);
     }
     public void Drive(double Speed, double Rotation){
         if (!m_turbo) {
-            /*if (Speed > 0) {
-                Speed = Speed / 2;
-            }
-            if (Speed < -0.6) {
-                Speed = -0.6;
-            }
-            if (Rotation > 0.5) {
-                Rotation = 0.5;
-            }
-            if (Rotation < -0.5) {
-                Rotation = -0.5;
-            } */
             Speed = Speed / 2;
         }
         drive.curvatureDrive(Speed, Rotation, !m_turbo);
