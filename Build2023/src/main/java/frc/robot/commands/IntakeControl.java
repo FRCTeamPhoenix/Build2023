@@ -59,9 +59,10 @@ public class IntakeControl extends CommandBase {
     public void execute() {
         if(m_intake_speed > 0.1) {
             m_intake.takeGamePiece();
-        } else if (m_intake_speed < -0.1) {
+        } else if (m_intake_speed < -0.05) {
             m_intake.ejectGamePiece();
         } else {
+            m_intake.intakeStop();
             finished = true;
         }
     }
