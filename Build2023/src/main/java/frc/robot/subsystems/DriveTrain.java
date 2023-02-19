@@ -373,5 +373,8 @@ drive.setMaxOutput(1.0);
     /* Reset built string */
     //_sb.setLength(0);
     }
+    public void turnDegrees(double angle, double speed) {
+        
+    }
 }
 
