@@ -60,7 +60,7 @@ frontLeft.configFactoryDefault();
 
         /* Invert Motor? and set Break Mode */
 frontLeft.setInverted(false);
-frontLeft.setNeutralMode(NeutralMode.Coast);
+frontLeft.setNeutralMode(NeutralMode.Brake);
 
         /* Set the peak and nominal outputs */
 frontLeft.configNominalOutputForward(0, 30);
@@ -77,7 +77,7 @@ backLeft.configFactoryDefault();
 
         /* Invert Motor? and set Break Mode */
 backLeft.setInverted(false);
-backLeft.setNeutralMode(NeutralMode.Coast);
+backLeft.setNeutralMode(NeutralMode.Brake);
 
         /* Set the peak and nominal outputs */
 backLeft.configNominalOutputForward(0, 30);
@@ -98,7 +98,7 @@ frontRight.configFactoryDefault();
 
         /* Invert Motor? and set Break Mode */
 frontRight.setInverted(true);
-frontRight.setNeutralMode(NeutralMode.Coast);
+frontRight.setNeutralMode(NeutralMode.Brake);
 
         /* Set the peak and nominal outputs */
 frontRight.configNominalOutputForward(0, 30);
@@ -115,7 +115,7 @@ backRight.configFactoryDefault();
 
         /* Invert Motor? and set Break Mode */
 backRight.setInverted(true);
-backRight.setNeutralMode(NeutralMode.Coast);
+backRight.setNeutralMode(NeutralMode.Brake);
 
         /* Set the peak and nominal outputs */
 backRight.configNominalOutputForward(0, 30);

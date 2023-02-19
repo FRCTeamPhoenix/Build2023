@@ -56,7 +56,7 @@ public class ScorePosition extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        isScoring = m_arm.liftToScorePosition();
+        isScoring = m_arm.armToPosition(-92);
     }
 
     // Called once the command ends or is interrupted.

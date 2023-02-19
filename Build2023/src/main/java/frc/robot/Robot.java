@@ -77,7 +77,8 @@ public class Robot extends TimedRobot {
             m_robotContainer.getArm().setStartPosition();
         }
         if (m_robotContainer.getxbox_operator().getPOV() == 90 || m_robotContainer.getxbox_operator().getPOV() == 270) {
-            m_robotContainer.getArm().liftToScorePosition();
+            //m_robotContainer.getArm().liftToScorePosition();
+            m_robotContainer.getArm().armToPosition(-92);
         }
         if (m_robotContainer.getxbox_operator().getPOV() == 180) {
             m_robotContainer.getArm().toCubePosition();
