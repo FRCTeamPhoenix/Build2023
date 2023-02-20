@@ -31,8 +31,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Arm extends SubsystemBase {
-    private double liftLimitSwitch = 40; //PLACEHOLDER
-    private double retractLimitSwitch = 40; 
     //private boolean doneResetting = false;
     private SparkMaxPIDController m_lift_pidController, m_extend_pidController;
     private RelativeEncoder m_lift_encoder, m_extend_encoder;

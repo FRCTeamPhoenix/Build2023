@@ -162,6 +162,7 @@ drive.setMaxOutput(1.0);
         m_turbo = turbo;
     }
     public void Drive(double Speed, double Rotation){
+      //m_turbo is set if the driver is pulling the Right 
         if (!m_turbo) {
             Speed = Speed / 2;
             frontRight.setNeutralMode(NeutralMode.Brake);
