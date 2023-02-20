@@ -164,6 +164,16 @@ drive.setMaxOutput(1.0);
     public void Drive(double Speed, double Rotation){
         if (!m_turbo) {
             Speed = Speed / 2;
+            frontRight.setNeutralMode(NeutralMode.Brake);
+            frontLeft.setNeutralMode(NeutralMode.Brake);
+            backRight.setNeutralMode(NeutralMode.Brake);
+            backLeft.setNeutralMode(NeutralMode.Brake);
+            
+        }else{
+          frontRight.setNeutralMode(NeutralMode.Coast);
+          frontLeft.setNeutralMode(NeutralMode.Coast);
+          backRight.setNeutralMode(NeutralMode.Coast);
+          backLeft.setNeutralMode(NeutralMode.Coast);
         }
         drive.curvatureDrive(Speed, Rotation, !m_turbo);
     }

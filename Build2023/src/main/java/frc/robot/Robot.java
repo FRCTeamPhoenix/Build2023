@@ -83,19 +83,6 @@ public class Robot extends TimedRobot {
         if (m_robotContainer.getxbox_operator().getPOV() == 180) {
             m_robotContainer.getArm().toCubePosition();
         }
-        //Arm control
-        /*double extend_y = m_robotContainer.getxbox_operator().getLeftY();
-        if ((extend_y > 0.1) || (extend_y < -0.1)) {
-            m_robotContainer.getArm().inOut(extend_y);
-        } else {
-            m_robotContainer.getArm().inOut(0.0);
-        }
-        double lift_y = m_robotContainer.getxbox_operator().getRightY();
-        if ((lift_y > 0.1) || (lift_y < -0.1)) {
-            m_robotContainer.getArm().upDown(lift_y);
-        } else {
-            m_robotContainer.getArm().upDown(0.0);
-        } */
     }
 
 
