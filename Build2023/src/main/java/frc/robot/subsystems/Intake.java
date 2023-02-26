@@ -68,8 +68,8 @@ sm_motor_right.burnFlash();
     public void periodic() {
         // This method will be called once per scheduler run
         //SmartDashboard.putNumber("IL Temp", sm_motor_left.getMotorTemperature());
-        SmartDashboard.putNumber("IR Temp", sm_motor_right.getMotorTemperature());
-        SmartDashboard.putNumber("IR Volt", sm_motor_right.getOutputCurrent());
+        SmartDashboard.putNumber("Intake Temp", sm_motor_right.getMotorTemperature());
+        SmartDashboard.putNumber("Intake Volt", sm_motor_right.getOutputCurrent());
         //SmartDashboard.putNumber("IL Volt", sm_motor_left.getOutputCurrent());
     }
 
@@ -92,6 +92,9 @@ sm_motor_right.burnFlash();
     }
     public void intakeStop() {
         setIntakeSpeed(0);
+    }
+    public void shootCube() {
+        setIntakeSpeed(-0.7);
     }
 }
 
