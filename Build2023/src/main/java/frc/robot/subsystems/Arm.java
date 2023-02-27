@@ -213,7 +213,7 @@ sm_motor_extend.burnFlash();
             upDown(0.25);
         }
         if (m_extend_encoder.getPosition() >= 0) {
-            inOut(-0.25);
+            inOut(-0.1);
         }
         if (m_lift_encoder.getPosition() >= -10 && m_extend_encoder.getPosition() <= 3) {
             return true;
