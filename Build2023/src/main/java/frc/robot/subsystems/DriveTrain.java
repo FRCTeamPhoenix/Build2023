@@ -344,15 +344,17 @@ drive.setMaxOutput(1.0);
   public boolean moveDistance (double target, double speed) {
     double currentCounts = (m_left_encoder.getPosition() + m_right_encoder.getPosition()) / 2;
     double error = target - currentCounts;
-    if (error < 0) {
-      speed = speed * -1;
-    }
+    //if (error < 0) {
+      //speed = speed * -1;
+    //}
     System.out.println("Current Counts " + currentCounts);
     System.out.println("Target Counts " + target);
     System.out.println("Error " + error);
-    /*SmartDashboard.putNumber("Current Counts", currentCounts);
+    SmartDashboard.putNumber("Current Counts", currentCounts);
     SmartDashboard.putNumber("Target Counts", target);
-    SmartDashboard.putNumber("Error", error); */
+    SmartDashboard.putNumber("Error", error);
+    SmartDashboard.putNumber("Right Encoder", m_right_encoder.getPosition());
+    SmartDashboard.putNumber("Left Encoder", m_left_encoder.getPosition());
     if (Math.abs(error) > 1000) {
       curvatureDrive(speed, 0, true);
       return false;
@@ -361,6 +363,14 @@ drive.setMaxOutput(1.0);
     }
 
   }
+
+  public double getLeftEncoder() {
+    return m_left_encoder.getPosition();
+  }
+public void resetEncoders() {
+  m_left_encoder.setPosition(0);
+  m_right_encoder.setPosition(0);
+}
 
   public void teleopPeriodic() {
 
