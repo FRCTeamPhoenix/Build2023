@@ -41,11 +41,12 @@ public class AutoScoreLow extends SequentialCommandGroup {
         //          new command3(argsN, subsystem)
         //      )    
         //  );
-        //new LowerToPosition(position, arm),
-        //new IntakeControl(-1, intake).withTimeout(0.5),
-        //new startPosition(arm).withTimeout(4.0),
-        //new LowerToPosition(0, arm).withTimeout(5),
-        new DriveDistance(80.0, 0.25, drivetrain)
+        new LowerToPosition(position, arm),
+        new IntakeControl(-1, intake).withTimeout(1),
+        new IntakeControl(0, intake),
+        //new startPosition(arm).withTimeout(4.0);
+        new DriveDistanceTest(80.0, 0.75, drivetrain),
+        new LowerToPosition(0, arm).withTimeout(5)
         );
     }
 

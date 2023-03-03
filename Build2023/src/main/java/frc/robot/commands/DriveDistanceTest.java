@@ -62,7 +62,7 @@ public class DriveDistanceTest extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-    m_driveTrain.Drive(0.25, 0);
+    m_driveTrain.Drive(m_speed, 0);
 
         //atTarget = m_driveTrain.moveDistance(target, m_speed);
     }
