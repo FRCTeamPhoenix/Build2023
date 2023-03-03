@@ -41,10 +41,12 @@ public class AutoCone extends SequentialCommandGroup {
         //          new command3(argsN, subsystem)
         //      )    
         //  );
+        new DriveDistanceTest(6, -0.25, drivetrain).withTimeout(2),
         new ExtendToPosition(50, arm),
         new LowerToPosition(position, arm),
         new IntakeControl(-1, intake).withTimeout(0.5),
-        new DriveDistance(80.0, 0.25, drivetrain),
+        new IntakeControl(0, intake).withTimeout(0.1),
+        new DriveDistanceTest(80.0, 0.75, drivetrain),
         new startPosition(arm).withTimeout(4)
         );
     }

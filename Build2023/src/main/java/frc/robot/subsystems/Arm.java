@@ -268,5 +268,19 @@ sm_motor_extend.burnFlash();
             return false;
         }
     }
+
+    public boolean outToPosition(double d) {
+        m_extend_pidController.setSmartMotionMaxVelocity(2000,0);
+        m_extend_pidController.setSmartMotionMinOutputVelocity(0,0);
+        m_extend_pidController.setSmartMotionMaxAccel(1500,0);
+        m_extend_pidController.setSmartMotionAllowedClosedLoopError(1.0, 0);
+        m_extend_pidController.setReference(d, ControlType.kSmartMotion);
+        
+        if (Math.abs(m_extend_encoder.getPosition() - d) <= 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
