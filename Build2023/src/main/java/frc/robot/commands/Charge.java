@@ -59,8 +59,8 @@ public class Charge extends CommandBase {
     @Override
     // Assuming if pitch positive, go forward; if pitch negative, go backward; close enough to level, do nothing
     public void execute() {
-        double maxSpeed = 0.35;
-        double deadBand = 2;
+        double maxSpeed = 0.3;
+        double deadBand = 1;
         double error = m_gyro.getPitch();
         SmartDashboard.putNumber("Roll!!!", error);
         if (Math.abs(error) < deadBand) {

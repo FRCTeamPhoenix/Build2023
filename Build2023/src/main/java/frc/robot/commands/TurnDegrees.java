@@ -65,11 +65,11 @@ public class TurnDegrees extends CommandBase {
     @Override
     public void execute() {
         if (m_angle>0){
-            m_driveTrain.turn(true,m_speed);
+            m_driveTrain.turn(false,m_speed);
         }else{
-            m_driveTrain.turn(false,m_speed); 
+            m_driveTrain.turn(true,m_speed); 
         }
-        if(m_gyro.getYaw()==m_angle){
+        if(m_gyro.getYaw()>=m_angle){
             atTarget=true;
         }
     }
