@@ -82,4 +82,7 @@ pigeon_gryo1 = new PigeonIMU(8);
     public boolean isLevel() {
         return (Math.abs(getPitch()) < 2)  && (Math.abs(getRoll()) < 2);
     }
+    public void setYaw(double angle){
+        pigeon_gryo1.setYaw(angle);
+    }
 }

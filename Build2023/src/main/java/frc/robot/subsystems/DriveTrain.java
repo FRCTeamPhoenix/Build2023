@@ -427,8 +427,13 @@ public void resetEncoders() {
     /* Reset built string */
     //_sb.setLength(0);
     }
-    public void turnDegrees(double angle, double speed) {
-        
+    public void turn(boolean bLeft,double speed) {
+        if (bLeft){
+            drive.arcadeDrive(0, speed);
+        }
+        else{
+          drive.arcadeDrive(0, -speed);
+        }
     }
 }
 

@@ -210,10 +210,10 @@ sm_motor_extend.burnFlash();
 
     public boolean setStartPosition() {
         if (m_lift_encoder.getPosition() <= 0) {
-            upDown(0.75);
+            upDown(1);
         }
         if (m_extend_encoder.getPosition() >= 0) {
-            inOut(-0.2);
+            inOut(-0.25);
         }
         if (m_lift_encoder.getPosition() >= -10 && m_extend_encoder.getPosition() <= 3) {
             return true;
