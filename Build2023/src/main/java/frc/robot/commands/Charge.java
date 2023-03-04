@@ -11,6 +11,7 @@
 // ROBOTBUILDER TYPE: Command.
 
 package frc.robot.commands;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import java.util.function.DoubleSupplier;
 import frc.robot.subsystems.DriveTrain;
@@ -58,13 +59,14 @@ public class Charge extends CommandBase {
     @Override
     // Assuming if pitch positive, go forward; if pitch negative, go backward; close enough to level, do nothing
     public void execute() {
-        double maxSpeed = 0.5;
+        double maxSpeed = 0.35;
         double deadBand = 2;
         double error = m_gyro.getPitch();
+        SmartDashboard.putNumber("Roll!!!", error);
         if (Math.abs(error) < deadBand) {
             error = 0;
         }
-        m_drivetrain.curvatureDrive((error / 15) * maxSpeed, 0, true);
+        m_drivetrain.Drive((error / 15) * maxSpeed, 0);
     }
 
     // Called once the command ends or is interrupted.
