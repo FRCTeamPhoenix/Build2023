@@ -57,7 +57,6 @@ public class AutoCubeHighCharge extends SequentialCommandGroup {
             new DriveDistanceTest(135.0, 0.7, drivetrain)
         ),
         new WaitCommand(0.75),
-        //new TurnDegrees(165, .5, drivetrain, gyro).withTimeout(5),
         new DriveDistanceTest(30, -0.7, drivetrain),
         new Charge(gyro,drivetrain).withTimeout(9)
         );
