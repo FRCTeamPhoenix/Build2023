@@ -49,12 +49,13 @@ public class OldConeCharge extends SequentialCommandGroup {
         //     new ExtendToPosition(50, arm),
         //     new LowerToPosition(position, arm)
         // ),
-        new ArmMove(position,50, arm),
+        new ExtendToPosition(50, arm),
+        new LowerToPosition(position, arm),
         new IntakeControl(-0.7, intake).withTimeout(0.7),
         new IntakeControl(0, intake),
         Commands.parallel(
             new ArmMove(0, 0, arm),
-            new DriveDistanceTest(135.0, 0.7, drivetrain)
+            new DriveDistanceTest(40.0, 0.7, drivetrain)
         ),
         new Charge(gyro,drivetrain).withTimeout(9)
         );

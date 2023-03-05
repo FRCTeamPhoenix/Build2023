@@ -52,7 +52,7 @@ public class AutoCubeCharge extends SequentialCommandGroup {
             new ArmMove(0, 0, arm),
             new DriveDistanceTest(135.0, 0.7, drivetrain)
         ),
-        new WaitCommand(0.75),
+        //new WaitCommand(0.75),
         new DriveDistanceTest(30, -0.7, drivetrain),
         new Charge(gyro,drivetrain).withTimeout(9)
         );
