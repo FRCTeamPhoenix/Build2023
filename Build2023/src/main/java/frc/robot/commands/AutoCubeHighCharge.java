@@ -43,6 +43,7 @@ public class AutoCubeHighCharge extends SequentialCommandGroup {
         //          new command3(argsN, subsystem)
         //      )    
         //  );
+
         Commands.parallel(
             new ExtendToPosition(50, arm),
             new LowerToPosition(position, arm)
