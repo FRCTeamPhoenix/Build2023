@@ -254,6 +254,7 @@ sm_motor_extend.burnFlash();
             return false;
         }
     }
+
     public boolean armToPosition (double d) {
         m_lift_pidController.setSmartMotionMaxVelocity(20000, 0);
         m_lift_pidController.setSmartMotionMinOutputVelocity(0, 0);
