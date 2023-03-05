@@ -43,6 +43,8 @@ public class AutoCone extends SequentialCommandGroup {
         //      )    
         //  );
         new DriveDistanceTest(7, -0.25, drivetrain).withTimeout(2.5),
+        //If the below parallel command fails we can use this
+        //new ArmMove(position,50,arm),
         Commands.parallel(
             new ExtendToPosition(50, arm),
             new LowerToPosition(position, arm)
