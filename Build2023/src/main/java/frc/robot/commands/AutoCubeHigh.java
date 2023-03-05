@@ -46,10 +46,13 @@ public class AutoCubeHigh extends SequentialCommandGroup {
         // Commands.parallel(
             new ExtendToPosition(50, arm),
             new LowerToPosition(position, arm),
-        // )
+        // ),
         new IntakeControl(-0.7, intake).withTimeout(1),
         new IntakeControl(0, intake),
-        new DriveDistanceTest(80.0, 0.75, drivetrain),
+        // Commands.parallel(
+            new ExtendToPosition(0, arm),
+            new DriveDistanceTest(80.0, 0.75, drivetrain),
+        // ),
         new startPosition(arm).withTimeout(4)
         );
     }

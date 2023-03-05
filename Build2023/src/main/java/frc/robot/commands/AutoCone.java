@@ -50,6 +50,7 @@ public class AutoCone extends SequentialCommandGroup {
         new IntakeControl(-1, intake).withTimeout(0.5),
         new IntakeControl(0, intake).withTimeout(0.1),
         // Commands.parallel(
+            new ExtendToPosition(0, arm),
             new DriveDistanceTest(145, 0.75, drivetrain),
             new startPosition(arm).withTimeout(4)
         // )
