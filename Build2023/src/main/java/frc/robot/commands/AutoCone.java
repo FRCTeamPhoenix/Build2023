@@ -44,14 +44,14 @@ public class AutoCone extends SequentialCommandGroup {
         //  );
         new DriveDistanceTest(7, -0.25, drivetrain).withTimeout(2.5),
         //If the below parallel command fails we can use this
-        //new ArmMove(position,50,arm),
-        Commands.parallel(
-            new ExtendToPosition(50, arm),
-            new LowerToPosition(position, arm)
-        ),
+        new ArmMove(position,50,arm),
+        // Commands.parallel(
+            // new ExtendToPosition(50, arm),
+            // new LowerToPosition(position, arm)
+        // ),
         new IntakeControl(-1, intake).withTimeout(0.5),
         new IntakeControl(0, intake).withTimeout(0.1),
-         Commands.parallel(
+        Commands.parallel(
             new ExtendToPosition(0, arm),
             new DriveDistanceTest(145, 0.75, drivetrain)
         ),

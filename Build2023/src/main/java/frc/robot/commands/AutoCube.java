@@ -43,17 +43,13 @@ public class AutoCube extends SequentialCommandGroup {
         //      )    
         //  );
         
-        // Commands.parallel(
-            new ExtendToPosition(50, arm),
-            new LowerToPosition(position, arm),
-        // ),
+        new ArmMove(position, 50, arm),
         new IntakeControl(-0.2, intake).withTimeout(0.3),
         new IntakeControl(0, intake),
-        // Commands.parallel(
-            new ExtendToPosition(0, arm),
-            new DriveDistanceTest(80.0, 0.75, drivetrain),
-            new startPosition(arm).withTimeout(4)
-        // )
+        Commands.parallel(
+            new ArmMove(0, 0, arm),
+            new DriveDistanceTest(80.0, 0.75, drivetrain)
+        )
         );
     }
 
