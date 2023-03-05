@@ -282,5 +282,18 @@ sm_motor_extend.burnFlash();
             return false;
         }
     }
+
+    //Added this function to be called by parallel commands to make sure the
+    //individual functions that require the same subsystem dont conflict.
+    public boolean Move(double liftPosition, double extendPosition){
+        boolean inPosition = false;
+
+        if(armToPosition(liftPosition) && outToPosition(extendPosition)){
+            inPosition=true;
+        }
+
+
+        return inPosition;
+    }
 }
 
