@@ -50,7 +50,7 @@ public class AutoScoreLowCharge extends SequentialCommandGroup {
             new LowerToPosition(0, arm),
             new TurnDegrees(170, .5, drivetrain, gyro).withTimeout(10),
         // )
-        new DriveDistanceTest(40.0, -0.75, drivetrain),
+        new DriveDistanceTest(120.0, -0.75, drivetrain),
         new Charge(gyro,drivetrain).withTimeout(9)
         );
     }
