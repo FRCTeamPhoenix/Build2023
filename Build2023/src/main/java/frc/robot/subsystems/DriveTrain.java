@@ -435,5 +435,10 @@ public void resetEncoders() {
           drive.arcadeDrive(0, -speed);
         }
     }
+
+    public void turn(double speed) {
+      //Assumes speed is negative for turning right and positive for turning left.
+      drive.arcadeDrive(0, speed);
+  }
 }
 
