@@ -54,7 +54,7 @@ public class OldScoreLowCharge extends SequentialCommandGroup {
         new IntakeControl(0, intake),
         Commands.parallel(
             new ArmMove(0, 0, arm),
-            new DriveDistanceTest(40.0, 0.7, drivetrain)
+            new DriveDistanceTest(40.0, -0.7, drivetrain)
         ),
         new Charge(gyro,drivetrain).withTimeout(9)
         );
