@@ -57,7 +57,6 @@ public class AutoCubeHighCharge extends SequentialCommandGroup {
             new ArmMove(0, 0, arm),
             new DriveDistanceTest(145.0, -0.7, drivetrain)
         ),
-        // new ArmMove(0, 0, arm),
         new DriveDistanceTest(45, 0.7, drivetrain),
         new Charge(gyro,drivetrain).withTimeout(9)
         );

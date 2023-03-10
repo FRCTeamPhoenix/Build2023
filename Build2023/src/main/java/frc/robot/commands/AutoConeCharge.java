@@ -49,12 +49,12 @@ public class AutoConeCharge extends SequentialCommandGroup {
         new LowerToPosition(position, arm),
         new IntakeControl(-1, intake).withTimeout(0.5),
         new IntakeControl(0, intake).withTimeout(0.1),
+        new TurnDegrees(180, 0.7, drivetrain, gyro).withTimeout(2),
         Commands.parallel(
             new ArmMove(0, 0, arm),
-            new DriveDistanceTest(135.0, 0.7, drivetrain)
+            new DriveDistanceTest(145.0, -0.7, drivetrain)
         ),
-        // new WaitCommand(0.5),
-        new DriveDistanceTest(30, -0.7, drivetrain),
+        new DriveDistanceTest(45, 0.7, drivetrain),
         new Charge(gyro,drivetrain).withTimeout(9)
         );
     }
