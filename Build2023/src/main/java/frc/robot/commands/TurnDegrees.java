@@ -30,7 +30,8 @@ public class TurnDegrees extends CommandBase {
         private DriveTrain m_driveTrain;
     private double m_angle;
     private double m_speed;
-    private double MAX_TURN_SPEED=1;
+    private double MAX_TURN_SPEED= 1;
+    private double MIN_TURN_SPEED = 0.37;
     private Gyro m_gyro;
     double kP = 0.01;
     private double TURN_ERROR=.5;
@@ -67,7 +68,7 @@ public class TurnDegrees extends CommandBase {
     @Override
     public void execute() {
         double l_speed = 0;
-        double error = m_angle - m_gyro.getYaw();
+        double error = m_angle - Math.abs(m_gyro.getYaw());
 
         //Find our error (difference between the angle we want and the angle we have)
         // Multiply that by some value.  We want the turn to slow down as we get close to where we want to be
@@ -93,10 +94,13 @@ public class TurnDegrees extends CommandBase {
             l_speed=MAX_TURN_SPEED;
         }
             
+        if(l_speed < MIN_TURN_SPEED) {
+            l_speed = MIN_TURN_SPEED;
+        }
         if(l_speed<-MAX_TURN_SPEED){
             l_speed=-MAX_TURN_SPEED;
         }        
-        m_driveTrain.turn(l_speed);
+        m_driveTrain.turn(false, l_speed);
         if(error>=-TURN_ERROR && error<=TURN_ERROR){
             //Applying a band of -.5 to .5 degrees of slush in the turn target.
             atTarget=true;

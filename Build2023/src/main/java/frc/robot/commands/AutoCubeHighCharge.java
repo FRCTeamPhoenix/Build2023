@@ -39,7 +39,7 @@ public class AutoCubeHighCharge extends SequentialCommandGroup {
         //
         // addCommands(
         //      new command1(argsN, subsystem),
-        //      parallel(
+        //      Commands.parallel(
         //          new command2(argsN, subsystem),
         //          new command3(argsN, subsystem)
         //      )    
@@ -52,9 +52,10 @@ public class AutoCubeHighCharge extends SequentialCommandGroup {
         new ArmMove(position,50, arm),
         new IntakeControl(-0.7, intake).withTimeout(0.7),
         new IntakeControl(0, intake),
+        new TurnDegrees(180, 0.7, drivetrain, gyro).withTimeout(2),
         Commands.parallel(
             new ArmMove(0, 0, arm),
-            new DriveDistanceTest(145.0, 0.7, drivetrain)
+            new DriveDistanceTest(145.0, -0.7, drivetrain)
         ),
         // new ArmMove(0, 0, arm),
         new DriveDistanceTest(45, 0.7, drivetrain),
