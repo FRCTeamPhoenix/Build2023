@@ -171,12 +171,12 @@ balance.whileTrue(new Charge(m_gyro, m_driveTrain).withInterruptBehavior(Interru
                         SmartDashboard.putData("Balance",new Charge(m_gyro, m_driveTrain));
                         
 final JoystickButton btn_turnLeft = new JoystickButton(xbox_driver, XboxController.Button.kLeftBumper.value);        
-btn_turnLeft.whileTrue(new TurnDegrees(90, 0.7, m_driveTrain, m_gyro).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-                        SmartDashboard.putData("btn_turnLeft",new TurnDegrees(90, 0.7, m_driveTrain, m_gyro));
+btn_turnLeft.onTrue(new TurnDegrees(90, 0.7, m_driveTrain, m_gyro).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+                        SmartDashboard.putData("btn_turnLeft",new TurnDegrees(-90, 0.7, m_driveTrain, m_gyro));
 
 final JoystickButton btn_turnRight = new JoystickButton(xbox_driver, XboxController.Button.kRightBumper.value);        
-btn_turnRight.whileTrue(new TurnDegrees(90, -0.7, m_driveTrain, m_gyro).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-                        SmartDashboard.putData("btn_turnRight",new TurnDegrees(90, -0.7, m_driveTrain, m_gyro));
+btn_turnRight.onTrue(new TurnDegrees(90, -0.7, m_driveTrain, m_gyro).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+                        SmartDashboard.putData("btn_turnRight",new TurnDegrees(90, 0.7, m_driveTrain, m_gyro));
 
 final JoystickButton btn_midScore = new JoystickButton(xbox_operator, XboxController.Button.kLeftStick.value);        
 btn_midScore.whileTrue(new ArmMove(-145, 50, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
