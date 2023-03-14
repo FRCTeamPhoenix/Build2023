@@ -105,8 +105,8 @@ sm_motor_extend.burnFlash();
     kD_extend = 0; 
     kIz_extend = 0; 
     kFF_extend = 0.0003; 
-    kMaxOutput_extend = 1.25; 
-    kMinOutput_extend = -1.25;
+    kMaxOutput_extend = 1; 
+    kMinOutput_extend = -1;
     maxRPM_extend = 6500;
 
     // set PID coefficients
