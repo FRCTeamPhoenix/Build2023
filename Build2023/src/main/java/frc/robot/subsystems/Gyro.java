@@ -56,7 +56,7 @@ pigeon_gryo1 = new PigeonIMU(8);
         SmartDashboard.putNumber("Yaw", pigeon_gryo1.getYaw());
         SmartDashboard.putNumber("Pitch", pigeon_gryo1.getPitch());
         SmartDashboard.putNumber("Roll", pigeon_gryo1.getRoll());
-
+        SmartDashboard.putNumber("Heading", getHeading());
         // This method will be called once per scheduler run
 
     }
@@ -87,6 +87,6 @@ pigeon_gryo1 = new PigeonIMU(8);
     }
 
     public double getHeading(){
-        return Math.IEEEremainder(pigeon_gryo1.getYaw(),360) * -1;
+        return Math.IEEEremainder(pigeon_gryo1.getYaw(),360);
     }
 }
