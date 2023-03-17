@@ -119,6 +119,12 @@ private final XboxController xbox_driver = new XboxController(0);
 // Create some buttons
 final JoystickButton btn_lower = new JoystickButton(xbox_operator, XboxController.Button.kA.value);        
 btn_lower.whileTrue(new ArmLower( m_arm ).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+
+final JoystickButton btn_yellow = new JoystickButton(xbox_driver, XboxController.Button.kY.value);        
+btn_yellow.whileTrue(new LightsColor( "yellow" ).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+
+final JoystickButton btn_purple = new JoystickButton(xbox_driver, XboxController.Button.kX.value);        
+btn_purple.whileTrue(new LightsColor( "purple" ).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
                         
 final JoystickButton btn_lift = new JoystickButton(xbox_operator, XboxController.Button.kY.value);        
 btn_lift.whileTrue(new ArmRaise(true, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
