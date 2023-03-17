@@ -87,6 +87,6 @@ pigeon_gryo1 = new PigeonIMU(8);
     }
 
     public double getHeading(){
-        return Math.IEEEremainder(pigeon_gryo1.getYaw(),360);
+        return Math.IEEEremainder(pigeon_gryo1.getYaw(),360) * -1;
     }
 }
