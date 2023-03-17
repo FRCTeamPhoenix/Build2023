@@ -53,7 +53,7 @@ public class OldCubeCharge extends SequentialCommandGroup {
         new IntakeControl(-0.7, intake).withTimeout(0.7),
         new IntakeControl(0, intake),
         Commands.parallel(
-            new TurnDegrees(180, 0.7, drivetrain, gyro),
+            new TurnDegreesPID(180, drivetrain, gyro),
             new ArmMove(0, 0, arm)
         ),
         new DriveDistanceTest(40.0, -0.7, drivetrain),
