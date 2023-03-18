@@ -23,6 +23,7 @@ import frc.robot.commands.ArmMove;
 import frc.robot.commands.ResetArm;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cscore.VideoSource;
 
 /**
  * The VM is configured to automatically run this class, and to call the

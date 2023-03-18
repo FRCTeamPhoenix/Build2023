@@ -49,15 +49,18 @@ public class AutoCubeHighCharge extends SequentialCommandGroup {
         //     new ExtendToPosition(50, arm),
         //     new LowerToPosition(position, arm)
         // ),
+        new IntakeControl(0.5, intake).withTimeout(0.1),
+        new IntakeControl(0, intake),
         new ArmMove(position,50, arm),
         new IntakeControl(-0.7, intake).withTimeout(0.7),
         new IntakeControl(0, intake),
-        new TurnDegreesPID(180, drivetrain, gyro).withTimeout(2),
         Commands.parallel(
-            new ArmMove(0, 0, arm),
-            new DriveDistanceTest(145.0, -0.7, drivetrain)
+            new TurnDegreesPID(180, drivetrain, gyro).withTimeout(4),
+            new ArmMove(0, 0, arm)
         ),
-        new DriveDistanceTest(45, 0.7, drivetrain),
+        new DriveDistanceTest(145.0, -0.7, drivetrain),
+        new TurnDegreesPID(0, drivetrain, gyro).withTimeout(3),
+        new DriveDistanceTest(45, -0.7, drivetrain),
         new Charge(gyro,drivetrain).withTimeout(9)
         );
     }
