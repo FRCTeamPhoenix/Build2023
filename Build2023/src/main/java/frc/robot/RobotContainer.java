@@ -163,7 +163,7 @@ btn_eject.whileTrue(new IntakeControl(-1, m_intake).withInterruptBehavior(Interr
                         SmartDashboard.putData("btn_eject",new IntakeControl(-1, m_intake));
                         
 final JoystickButton btn_take = new JoystickButton(xbox_operator, XboxController.Button.kLeftBumper.value);        
-btn_take.whileTrue(new IntakeControl(1, m_intake).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+btn_take.whileTrue(new IntakeControl(0.5, m_intake).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
                         SmartDashboard.putData("btn_take",new IntakeControl(1, m_intake));
                         
 final JoystickButton balance = new JoystickButton(xbox_driver, XboxController.Button.kB.value);        
