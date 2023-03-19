@@ -32,7 +32,7 @@ public class TurnDegrees extends CommandBase {
         private DriveTrain m_driveTrain;
     private double m_angle;
     private double m_speed;
-    private double MAX_TURN_SPEED= .5;
+    private double MAX_TURN_SPEED = .5;
     private double MIN_TURN_SPEED = 0.45;
     private Gyro m_gyro;
     double kP = 0.1;

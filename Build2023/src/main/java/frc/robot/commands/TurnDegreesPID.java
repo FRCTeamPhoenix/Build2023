@@ -11,8 +11,9 @@ import frc.robot.subsystems.Gyro;
 public class TurnDegreesPID extends PIDCommand {
 
     public TurnDegreesPID(double targetAngleDegrees, DriveTrain drive, Gyro gyro){
+       
         super(
-            new edu.wpi.first.math.controller.PIDController(0.03, 0, 0),
+            new edu.wpi.first.math.controller.PIDController(0.11, 0.01, 0.01),
             gyro::getHeading,
             targetAngleDegrees,
             output->drive.turn(output),
@@ -21,7 +22,6 @@ public class TurnDegreesPID extends PIDCommand {
         getController().enableContinuousInput(-180, 180);
         getController().setTolerance(1, 10);
     }
-
     @Override
     public boolean isFinished(){
         return getController().atSetpoint();
