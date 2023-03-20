@@ -347,12 +347,6 @@ drive.setMaxOutput(1.0);
   public boolean moveDistance (double target, double speed) {
     double currentCounts = (frontLeft.getSelectedSensorPosition() + frontRight.getSelectedSensorPosition()) / 2;
     double error = target - currentCounts;
-    //if (error < 0) {
-      //speed = speed * -1;
-    //}
-    System.out.println("Current Counts " + currentCounts);
-    System.out.println("Target Counts " + target);
-    System.out.println("Error " + error);
     SmartDashboard.putNumber("Current Counts", currentCounts);
     SmartDashboard.putNumber("Target Counts", target);
     SmartDashboard.putNumber("Error", error);
@@ -373,17 +367,6 @@ public void resetEncoders() {
   frontRight.setSelectedSensorPosition(0);
   frontLeft.setSelectedSensorPosition(0);
 }
-
-  public void teleopPeriodic() {
-    }
-    public void turn(boolean bLeft,double speed) {
-        if (bLeft){
-            drive.arcadeDrive(0, speed);
-        }
-        else{
-          drive.arcadeDrive(0, -speed);
-        }
-    }
 
     public void turn(double speed) {
       //Assumes speed is negative for turning right and positive for turning left.

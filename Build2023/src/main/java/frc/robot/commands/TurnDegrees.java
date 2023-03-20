@@ -71,25 +71,6 @@ public class TurnDegrees extends CommandBase {
     public void execute() {
         double l_speed = 0;
         double error = m_angle - m_gyro.getYaw();
-
-        //Find our error (difference between the angle we want and the angle we have)
-        // Multiply that by some value.  We want the turn to slow down as we get close to where we want to be
-        //Examples:
-        // Target=90 (90 degrees right)
-        // Current=0 (we just started turning)
-        // error = 90 (90-0)
-        // Speed to turn = 90 * kP (or 90 * .01)
-        // Result: .9 (or almost max turn speed)
-        // As we get closer to the mark say we're at 80 degrees and want to get to 90 the example below plays out
-        // Target=0
-        // Current=80
-        // error = 10 (90-80)
-        // Speed to turn = 10 * kP (or 10 * .01)
-        // Result: .1 (or almost stopped)
-        // We will have to play with the kP value to determine if the stop is too sudden and never makes acutally to 90.
-        // You'll also notice the MAX_TURN_SPEED lines below for speed.  
-        // This is a constant above where we can change this to something slower than 1 if needed.
-        // 
         MathUtil.clamp(error,-10,10);
         l_speed = error * kP * m_speed;
         //MathUtil.clamp(-1*l_speed, MIN_TURN_SPEED, MAX_TURN_SPEED);       

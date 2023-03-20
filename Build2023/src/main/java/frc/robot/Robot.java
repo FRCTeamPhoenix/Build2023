@@ -90,9 +90,6 @@ public class Robot extends TimedRobot {
         if (m_robotContainer.getxbox_operator().getPOV() == 180) {
             m_robotContainer.getArm().toCubePosition();
         }
-        if (m_robotContainer.getxbox_operator().getRightTriggerAxis() > 0.01) {
-            m_robotContainer.getIntake().setIntakeSpeed(-0.7);
-        }
     }
 
 
