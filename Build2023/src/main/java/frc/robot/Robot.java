@@ -80,12 +80,14 @@ public class Robot extends TimedRobot {
         }
         if (m_robotContainer.getxbox_operator().getPOV() == 90) {
             //m_robotContainer.getArm().liftToScorePosition();
-            m_robotContainer.getArm().armToPosition(-75);
-            m_robotContainer.getArm().outToPosition(50);
+            new ArmMove(-58, 50, m_robotContainer.getArm());
+            // m_robotContainer.getArm().armToPosition(-75);
+            // m_robotContainer.getArm().outToPosition(50);
         }
         if (m_robotContainer.getxbox_operator().getPOV() == 270) {
-            m_robotContainer.getArm().armToPosition(-145);
-            m_robotContainer.getArm().outToPosition(50);
+            new ArmMove(-68, 50, m_robotContainer.getArm());
+            // m_robotContainer.getArm().armToPosition(-145);
+            // m_robotContainer.getArm().outToPosition(50);
         }
         if (m_robotContainer.getxbox_operator().getPOV() == 180) {
             m_robotContainer.getArm().toCubePosition();

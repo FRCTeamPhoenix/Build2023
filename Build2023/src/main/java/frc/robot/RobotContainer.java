@@ -83,10 +83,10 @@ private final XboxController xbox_driver = new XboxController(0);
     SmartDashboard.putData("AutoCone", new AutoCone(-145, m_arm, m_intake, m_driveTrain));
     SmartDashboard.putData("AutoCube", new AutoCube(-145, m_arm, m_intake, m_driveTrain));
     SmartDashboard.putData("AutoCubeHigh", new AutoCubeHigh(-75, m_arm, m_intake, m_driveTrain));
-    SmartDashboard.putData("AutoScoreLowCharge", new AutoScoreLowCharge(-257, m_arm, m_intake, m_driveTrain, m_gyro));
-    SmartDashboard.putData("AutoConeCharge", new AutoConeCharge(-145, m_arm, m_intake, m_driveTrain, m_gyro));
-    SmartDashboard.putData("AutoCubeCharge", new AutoCubeCharge(-145, m_arm, m_intake, m_driveTrain, m_gyro));
-    SmartDashboard.putData("AutoCubeHighCharge", new AutoCubeHighCharge(-75, m_arm, m_intake, m_driveTrain, m_gyro));
+    // SmartDashboard.putData("AutoScoreLowCharge", new AutoScoreLowCharge(-257, m_arm, m_intake, m_driveTrain, m_gyro));
+    // SmartDashboard.putData("AutoConeCharge", new AutoConeCharge(-145, m_arm, m_intake, m_driveTrain, m_gyro));
+    // SmartDashboard.putData("AutoCubeCharge", new AutoCubeCharge(-145, m_arm, m_intake, m_driveTrain, m_gyro));
+    // SmartDashboard.putData("AutoCubeHighCharge", new AutoCubeHighCharge(-75, m_arm, m_intake, m_driveTrain, m_gyro));
     SmartDashboard.putData("CubeHigh", new CubeHigh( m_intake ));
     SmartDashboard.putData("Charge", new Charge(m_gyro, m_driveTrain));
 
@@ -114,10 +114,10 @@ private final XboxController xbox_driver = new XboxController(0);
     m_chooser.addOption("AutoCone", new AutoCone(-58, m_arm, m_intake, m_driveTrain));
     m_chooser.addOption("AutoCube", new AutoCube(-88, m_arm, m_intake, m_driveTrain));
     m_chooser.addOption("AutoCubeHigh", new AutoCubeHigh(-70, m_arm, m_intake, m_driveTrain));
-    m_chooser.addOption("AutoScoreLowCharge", new AutoScoreLowCharge(-151, m_arm, m_intake, m_driveTrain, m_gyro));
-    m_chooser.addOption("AutoConeCharge", new AutoConeCharge(-58, m_arm, m_intake, m_driveTrain, m_gyro));
-    m_chooser.addOption("AutoCubeCharge", new AutoCubeCharge(-88, m_arm, m_intake, m_driveTrain, m_gyro));
-    m_chooser.addOption("AutoCubeHighCharge", new AutoCubeHighCharge(-70, m_arm, m_intake, m_driveTrain, m_gyro));
+    // m_chooser.addOption("AutoScoreLowCharge", new AutoScoreLowCharge(-151, m_arm, m_intake, m_driveTrain, m_gyro));
+    // m_chooser.addOption("AutoConeCharge", new AutoConeCharge(-58, m_arm, m_intake, m_driveTrain, m_gyro));
+    // m_chooser.addOption("AutoCubeCharge", new AutoCubeCharge(-88, m_arm, m_intake, m_driveTrain, m_gyro));
+    // m_chooser.addOption("AutoCubeHighCharge", new AutoCubeHighCharge(-70, m_arm, m_intake, m_driveTrain, m_gyro));
     m_chooser.addOption("OldScoreLowCharge", new OldScoreLowCharge(-151, m_arm, m_intake, m_driveTrain, m_gyro));
     m_chooser.addOption("OldConeCharge", new OldConeCharge(-58, m_arm, m_intake, m_driveTrain, m_gyro));
     m_chooser.addOption("OldCubeCharge", new OldCubeCharge(-88, m_arm, m_intake, m_driveTrain, m_gyro));
@@ -178,14 +178,14 @@ final JoystickButton btn_turnRight = new JoystickButton(xbox_driver, XboxControl
 btn_turnRight.onTrue(new TurnDegreesPID(-90, m_driveTrain, m_gyro).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
                         SmartDashboard.putData("btn_turnRight",new TurnDegreesPID(-90, m_driveTrain, m_gyro));
 
-final JoystickButton btn_midScore = new JoystickButton(xbox_operator, XboxController.Button.kLeftStick.value);        
-btn_midScore.whileTrue(new ArmMove(-58, 51, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-                        SmartDashboard.putData("btn_midScore",new ArmMove(-58, 51, m_arm));
+final JoystickButton btn_highCube = new JoystickButton(xbox_operator, XboxController.Button.kLeftStick.value);        
+btn_highCube.whileTrue(new ArmMove(-58, 50, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+                        SmartDashboard.putData("btn_midScore",new ArmMove(-58, 50, m_arm));
 //for cone
 
-final JoystickButton btn_highCube = new JoystickButton(xbox_operator, XboxController.Button.kRightStick.value);        
-btn_highCube.whileTrue(new ArmMove(-73, 51, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-                        SmartDashboard.putData("btn_highCube",new ArmMove(-73, 51, m_arm));
+final JoystickButton btn_midScore = new JoystickButton(xbox_operator, XboxController.Button.kRightStick.value);        
+btn_midScore.whileTrue(new ArmMove(-68, 50, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+                        SmartDashboard.putData("btn_highCube",new ArmMove(-73, 50, m_arm));
 
 SmartDashboard.putData("TurnDegreesPIDRight",new TurnDegreesPID(90, m_driveTrain, m_gyro));
 SmartDashboard.putData("TurnDegreesPIDLeft",new TurnDegreesPID(-90, m_driveTrain, m_gyro));
