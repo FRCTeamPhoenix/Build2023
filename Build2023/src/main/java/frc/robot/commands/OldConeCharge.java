@@ -45,10 +45,6 @@ public class OldConeCharge extends SequentialCommandGroup {
         //      )    
         //  );
 
-        // Commands.parallel(
-        //     new ExtendToPosition(50, arm),
-        //     new LowerToPosition(position, arm)
-        // ),
         new ExtendToPosition(50, arm),
         new LowerToPosition(position, arm),
         new IntakeControl(-0.7, intake).withTimeout(0.7),
