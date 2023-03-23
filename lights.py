@@ -13,7 +13,7 @@ dots = dotstar.DotStar(board.SCK, board.MOSI, 240, brightness=0.1)
 logging.basicConfig(level=logging.DEBUG)
 
 # Setup Network Tables
-NetworkTables.initialize(server="192.168.86.34")
+NetworkTables.initialize(server="10.23.42.2")
 ColorTable = NetworkTables.getTable("SmartDashboard")
 ColorTable.putString("color","team")
 #Colors
