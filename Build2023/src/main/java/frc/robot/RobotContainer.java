@@ -170,13 +170,13 @@ final JoystickButton balance = new JoystickButton(xbox_driver, XboxController.Bu
 balance.whileTrue(new Charge(m_gyro, m_driveTrain).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
                         SmartDashboard.putData("Balance",new Charge(m_gyro, m_driveTrain));
                         
-final JoystickButton btn_turnLeft = new JoystickButton(xbox_driver, XboxController.Button.kLeftBumper.value);        
-btn_turnLeft.onTrue(new TurnAdditive(90, m_driveTrain, m_gyro).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-                        SmartDashboard.putData("btn_turnLeft",new TurnDegreesPID(90, m_driveTrain, m_gyro));
+// final JoystickButton btn_turnLeft = new JoystickButton(xbox_driver, XboxController.Button.kLeftBumper.value);        
+// btn_turnLeft.onTrue(new TurnAdditive(90, m_driveTrain, m_gyro).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+//                         SmartDashboard.putData("btn_turnLeft",new TurnDegreesPID(90, m_driveTrain, m_gyro));
 
-final JoystickButton btn_turnRight = new JoystickButton(xbox_driver, XboxController.Button.kRightBumper.value);        
-btn_turnRight.onTrue(new TurnAdditive(-90, m_driveTrain, m_gyro).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-                        SmartDashboard.putData("btn_turnRight",new TurnDegreesPID(-90, m_driveTrain, m_gyro));
+// final JoystickButton btn_turnRight = new JoystickButton(xbox_driver, XboxController.Button.kRightBumper.value);        
+// btn_turnRight.onTrue(new TurnAdditive(-90, m_driveTrain, m_gyro).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+//                         SmartDashboard.putData("btn_turnRight",new TurnDegreesPID(-90, m_driveTrain, m_gyro));
 
 final JoystickButton btn_highCube = new JoystickButton(xbox_operator, XboxController.Button.kLeftStick.value);        
 btn_highCube.whileTrue(new ArmMove(-58, 50, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
@@ -194,6 +194,14 @@ SmartDashboard.putData("TurnDegreesPIDSpinBehind",new TurnDegreesPID(180, m_driv
 final JoystickButton parkingBrake = new JoystickButton(xbox_driver, XboxController.Button.kX.value);        
 parkingBrake.whileTrue(new ParkingBrake(m_driveTrain).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
                         SmartDashboard.putData("ParkingBrake",new ParkingBrake(m_driveTrain));
+
+final JoystickButton yellowLight = new JoystickButton(xbox_driver, XboxController.Button.kY.value);
+yellowLight.onTrue(new ColorChange("yellow").withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+                        SmartDashboard.putData("YellowLight", new ColorChange("yellow"));
+
+final JoystickButton purpleLight = new JoystickButton(xbox_driver, XboxController.Button.kA.value);
+purpleLight.onTrue(new ColorChange("purple").withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+                        SmartDashboard.putData("PurpleLight", new ColorChange("purple"));
 
 //low cube or cone values (-144 lift, 0 extend)
 //mid cube values (-88 lift, 12 extend)

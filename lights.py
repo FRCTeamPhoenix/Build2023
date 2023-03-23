@@ -55,6 +55,12 @@ def team_color():
 		nt_color = ColorTable.getString("color","team")
 		if (nt_color!="team"):
 			return
+	dots[235]=Colors["red"];
+	dots[236]=Colors["red"];
+	dots[237]=Colors["red"];
+	dots[238]=Colors["red"];
+	dots[239]=Colors["red"];
+	# dots[240]=Colors["red"];
 #	dots.fill(Colors["red_orange"])
 
 # MAIN LOOP
