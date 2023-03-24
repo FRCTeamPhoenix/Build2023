@@ -19,12 +19,12 @@ ColorTable.putString("color","team")
 #Colors
 Colors = {
 "red" : (255,0,0),
-"yellow" : (255,255,0),
+"yellow" : (255,255,0), #yellowish green
 "purple" : (153,0,153),
 "orange" : (255,128,0),
 "red_orange" : (255,69,0),
 "red_bright" : (255,51,51),
-"dark_orange" : (255,140,0),
+"dark_orange" : (255,140,0), #yellow
 "blue" : (51,51,255),
 "crimson" : (220,20,60),
 "gold" : (255,215,0),
@@ -41,20 +41,36 @@ def team_color():
 	dots[0]=Colors["red"];
 	dots[1]=Colors["off"];
 	dots[2]=Colors["off"];
-	dots[3]=Colors["orange"];
-	dots[4]=Colors["off"];
-	dots[5]=Colors["off"];
+	dots[3]=Colors["red_orange"];
+	dots[4]=Colors["red_orange"];
+	dots[5]=Colors["red_orange"];
+	dots[6]=Colors["red_orange"];
+	dots[7]=Colors["red_orange"];
+	dots[8]=Colors["red_orange"];
+	dots[9]=Colors["off"];
+	dots[10]=Colors["off"];
 	for led in range(6,len(dots)):
-		dots[led-5]=Colors["red"];
-		dots[led-4]=Colors["off"];
-		dots[led-3]=Colors["off"];
-		dots[led-2]=Colors["orange"];
+		dots[led-10]=Colors["red"];
+		dots[led-9]=Colors["off"];
+		dots[led-8]=Colors["off"];
+		dots[led-7]=Colors["red_orange"];
+		dots[led-6]=Colors["red_orange"];
+		dots[led-5]=Colors["red_orange"];
+		dots[led-4]=Colors["red_orange"];
+		dots[led-3]=Colors["red_orange"];
+		dots[led-2]=Colors["red_orange"];
 		dots[led-1]=Colors["off"];
 		dots[led]=Colors["off"];
 		#Bail out if the color changed.
 		nt_color = ColorTable.getString("color","team")
 		if (nt_color!="team"):
 			return
+	dots[229]=Colors["red"];
+	dots[230]=Colors["red"];
+	dots[231]=Colors["red"];
+	dots[232]=Colors["red"];
+	dots[233]=Colors["red"];
+	dots[234]=Colors["red"];
 	dots[235]=Colors["red"];
 	dots[236]=Colors["red"];
 	dots[237]=Colors["red"];
