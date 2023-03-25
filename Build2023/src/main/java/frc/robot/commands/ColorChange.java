@@ -5,7 +5,10 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class ColorChange extends CommandBase {
     private String color;
 
+    private boolean ColorChanged;
+
     public ColorChange(String c) {
+        ColorChanged = false;
         color = c;
     }
 
@@ -21,6 +24,7 @@ public class ColorChange extends CommandBase {
         } else {
             SmartDashboard.putString("color", color);
         }
+        ColorChanged = true;
     }
     @Override
     public void end(boolean interrupted) {
@@ -29,6 +33,6 @@ public class ColorChange extends CommandBase {
 
     @Override
     public boolean isFinished () {
-        return true;
+        return ColorChanged;
     }
 }
