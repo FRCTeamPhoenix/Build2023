@@ -20,7 +20,7 @@ public class TurnDegreesPID extends PIDCommand {
             drive);
 
         getController().enableContinuousInput(-180, 180);
-        getController().setTolerance(4, 100);
+        getController().setTolerance(5, 100);
     }
     @Override
     public boolean isFinished(){

@@ -135,8 +135,8 @@ mg_right = new MotorControllerGroup(frontRight, backRight  );
 
 drive = new DifferentialDrive(mg_left, mg_right);
  addChild("Drive",drive);
- drive.setSafetyEnabled(true);
-drive.setExpiration(0.1);
+ drive.setSafetyEnabled(false);
+drive.setExpiration(3);
 drive.setMaxOutput(1.0);
 
 
@@ -149,14 +149,26 @@ drive.setMaxOutput(1.0);
     frontRight.configClosedloopRamp(.5);
     backLeft.configClosedloopRamp(.5);
     backRight.configClosedloopRamp(.5);
+    frontRight.setSafetyEnabled(false);
+    frontLeft.setSafetyEnabled(false);
+    backLeft.setSafetyEnabled(false);
+    backRight.setSafetyEnabled(false);
+    // frontRight.feed();
+    // frontLeft.feed();
+    // backLeft.feed();
+    // backRight.feed();
 
     }
 
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
-        SmartDashboard.putNumber("Right Encoder",  frontRight.getSelectedSensorPosition());
-        SmartDashboard.putNumber("Left Encoder", frontLeft.getSelectedSensorPosition());
+      frontRight.feed();
+      frontLeft.feed();
+      backLeft.feed();
+      backRight.feed();
+        //SmartDashboard.putNumber("Right Encoder",  frontRight.getSelectedSensorPosition());
+        //SmartDashboard.putNumber("Left Encoder", frontLeft.getSelectedSensorPosition());
     }
 
     @Override

@@ -54,7 +54,7 @@ public class ArmRetract extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_arm.inOut(-1);
+        m_arm.inOut(-0.75);
     }
 
     // Called once the command ends or is interrupted.

@@ -13,7 +13,9 @@ dots = dotstar.DotStar(board.SCK, board.MOSI, 240, brightness=0.1)
 logging.basicConfig(level=logging.DEBUG)
 
 # Setup Network Tables
-NetworkTables.initialize(server="10.23.42.2")
+while (not NetworkTables.isConnected()) :
+	NetworkTables.initialize(server="10.23.42.2")
+
 ColorTable = NetworkTables.getTable("SmartDashboard")
 ColorTable.putString("color","team")
 #Colors
@@ -82,6 +84,9 @@ def team_color():
 # MAIN LOOP
 while True:
 	try:
+		while (not NetworkTables.isConnected()) :
+			NetworkTables.initialize(server="10.23.42.2")
+
 		nt_color = ColorTable.getString("color","team")
 		if (nt_color == "team"):
 			team_color()
