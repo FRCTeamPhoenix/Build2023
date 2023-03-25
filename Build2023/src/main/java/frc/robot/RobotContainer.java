@@ -196,11 +196,11 @@ parkingBrake.whileTrue(new ParkingBrake(m_driveTrain).withInterruptBehavior(Inte
                         SmartDashboard.putData("ParkingBrake",new ParkingBrake(m_driveTrain));
 
 final JoystickButton yellowLight = new JoystickButton(xbox_driver, XboxController.Button.kY.value);
-yellowLight.toggleOnTrue(new ColorChange("dark_orange").withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+yellowLight.toggleOnTrue(new ColorChange("dark_orange") /*.withInterruptBehavior(InterruptionBehavior.kCancelSelf)*/);
                         SmartDashboard.putData("YellowLight", new ColorChange("dark_orange"));
 
 final JoystickButton purpleLight = new JoystickButton(xbox_driver, XboxController.Button.kA.value);
-purpleLight.onTrue(new ColorChange("purple").withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+purpleLight.toggleOnTrue(new ColorChange("purple")/*.withInterruptBehavior(InterruptionBehavior.kCancelSelf)*/);
                         SmartDashboard.putData("PurpleLight", new ColorChange("purple"));
 
 //low cube or cone values (-144 lift, 0 extend)
