@@ -49,7 +49,7 @@ public class OldConeCharge extends SequentialCommandGroup {
         new LowerToPosition(position, arm),
         new IntakeControl(-0.7, intake).withTimeout(0.7),
         new IntakeControl(0, intake),
-        new DriveDistanceTest(10.0, -0.8, drivetrain),
+        new DriveDistanceTest(10.0, 0.8, drivetrain),
         Commands.parallel(
             new TurnDegreesPID(180, drivetrain, gyro),
             new ArmMove(0, 0, arm)
