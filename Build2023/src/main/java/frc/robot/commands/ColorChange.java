@@ -15,7 +15,8 @@ public class ColorChange extends CommandBase {
 
     @Override
     public void execute() {
-        if (SmartDashboard.getString("color", "team") == color) {
+        boolean sameColor = SmartDashboard.getString("color", "team").trim().equals(color);
+        if (sameColor) {
             SmartDashboard.putString("color", "team");
         } else {
             SmartDashboard.putString("color", color);
