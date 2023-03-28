@@ -5,19 +5,7 @@ import adafruit_dotstar as dotstar
 from networktables import NetworkTables
 import logging
 
-
-# Using a DotStar Digital LED Strip with 60*4 (240 leds) LEDs connected to hardware SPI
-dots = dotstar.DotStar(board.SCK, board.MOSI, 240, brightness=0.1)
-
-# Start Loggign for pubsub
-logging.basicConfig(level=logging.DEBUG)
-
-# Setup Network Tables
-while (not NetworkTables.isConnected()) :
-	NetworkTables.initialize(server="10.23.42.2")
-
-ColorTable = NetworkTables.getTable("SmartDashboard")
-ColorTable.putString("color","team")
+#Constants
 #Colors
 Colors = {
 "red" : (255,0,0),
@@ -33,59 +21,68 @@ Colors = {
 "green" : (0,255,0),
 "off" : (0,0,0)
 }
+
+thingAmaBobPattern = ["red","off","off","red_orange","red_orange",,"red_orange",,"red_orange",,"red_orange","off","off"]
+
+#Server
+Server = "10.23.42.2"
+
+
 # HELPERS
 # a random color 0 -> 192
 def random_color():
 	return random.randrange(0, 7) * 32
 
+def flicker():
+	return random.randint(200, 255)
+
+def fire_effect():
+	for i in range(len(dots)):
+		dots[i] = FIRE_COLORS[random.randint(0, len(FIRE_COLORS)-1)]
+	for i in range(len(dots)):
+		r = flicker()
+		g = flicker() // 2
+		dots[i] = (r, g, 0)
+
+def thingAmaBob(led):
+	for x in range(10):
+		if((led+x) in range(0,240)):
+			dots[led+x]=Colors[thingAmaBobPattern[x]]
+
 def team_color():
-	n_dots = len(dots)
-	dots[0]=Colors["red"];
-	dots[1]=Colors["off"];
-	dots[2]=Colors["off"];
-	dots[3]=Colors["red_orange"];
-	dots[4]=Colors["red_orange"];
-	dots[5]=Colors["red_orange"];
-	dots[6]=Colors["red_orange"];
-	dots[7]=Colors["red_orange"];
-	dots[8]=Colors["red_orange"];
-	dots[9]=Colors["off"];
-	dots[10]=Colors["off"];
-	for led in range(6,len(dots)):
-		dots[led-10]=Colors["red"];
-		dots[led-9]=Colors["off"];
-		dots[led-8]=Colors["off"];
-		dots[led-7]=Colors["red_orange"];
-		dots[led-6]=Colors["red_orange"];
-		dots[led-5]=Colors["red_orange"];
-		dots[led-4]=Colors["red_orange"];
-		dots[led-3]=Colors["red_orange"];
-		dots[led-2]=Colors["red_orange"];
-		dots[led-1]=Colors["off"];
-		dots[led]=Colors["off"];
-		#Bail out if the color changed.
-		nt_color = ColorTable.getString("color","team")
-		if (nt_color!="team"):
-			return
-	dots[229]=Colors["red"];
-	dots[230]=Colors["red"];
-	dots[231]=Colors["red"];
-	dots[232]=Colors["red"];
-	dots[233]=Colors["red"];
-	dots[234]=Colors["red"];
-	dots[235]=Colors["red"];
-	dots[236]=Colors["red"];
-	dots[237]=Colors["red"];
-	dots[238]=Colors["red"];
-	dots[239]=Colors["red"];
-	# dots[240]=Colors["red"];
-#	dots.fill(Colors["red_orange"])
+	n_dots = len(dots) 
+	for current in range(10):
+		thingAmaBob(current-10)
+		for led in range(24):
+			thingAmaBob((led*10)+current)
+			#Bail out if the color changed.
+			nt_color = ColorTable.getString("color","team")
+			if (nt_color!="team"):
+				return
+	dots.fill(Colors["red"]);
+
+
+# Using a DotStar Digital LED Strip with 60*4 (240 leds) LEDs connected to hardware SPI
+dots = dotstar.DotStar(board.SCK, board.MOSI, 240, brightness=0.1)
+FIRE_COLORS = [(255, 10, 0), (255, 60, 0), (255, 100, 0), (255, 150, 0), (255, 200, 0), (255, 255, 0)]
+
+# Start Loggign for pubsub
+logging.basicConfig(level=logging.DEBUG)
+
+# Setup Network Tables
+while (not NetworkTables.isConnected()) :
+	NetworkTables.initialize(server=Server)
+	fire_effect()
+
+ColorTable = NetworkTables.getTable("SmartDashboard")
+ColorTable.putString("color","team")
 
 # MAIN LOOP
 while True:
 	try:
 		while (not NetworkTables.isConnected()) :
-			NetworkTables.initialize(server="10.23.42.2")
+			NetworkTables.initialize(server=Server)
+			fire_effect()
 
 		nt_color = ColorTable.getString("color","team")
 		if (nt_color == "team"):
