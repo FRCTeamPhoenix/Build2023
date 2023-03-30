@@ -13,7 +13,7 @@ public class TurnDegreesPID extends PIDCommand {
     public TurnDegreesPID(double targetAngleDegrees, DriveTrain drive, Gyro gyro){
        
         super(
-            new edu.wpi.first.math.controller.PIDController(0.15, 0.009, 0.025),
+            new edu.wpi.first.math.controller.PIDController(0.15, 0.006, 0.025),
             gyro::getHeading,
             targetAngleDegrees,
             output->drive.turn(output),

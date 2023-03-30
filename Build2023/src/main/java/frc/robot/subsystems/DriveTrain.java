@@ -373,11 +373,14 @@ drive.setMaxOutput(1.0);
   }
 
   public double getLeftEncoder() {
+    SmartDashboard.putNumber("LeftEncoder", frontLeft.getSelectedSensorPosition());
     return frontLeft.getSelectedSensorPosition();
   }
 public void resetEncoders() {
   frontRight.setSelectedSensorPosition(0);
   frontLeft.setSelectedSensorPosition(0);
+  backLeft.setSelectedSensorPosition(0);
+  backRight.setSelectedSensorPosition(0);
 }
 
     public void turn(double speed) {
