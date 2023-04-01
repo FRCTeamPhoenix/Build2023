@@ -79,7 +79,7 @@ public class DriveDistanceTest extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return ((Math.abs(m_driveTrain.getLeftEncoder())-m_currentEncoder) > (m_distance*1086));
+        return ((Math.abs(m_driveTrain.getLeftEncoder())) > (m_distance*1086));
     }
 
     @Override
