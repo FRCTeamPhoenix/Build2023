@@ -71,6 +71,7 @@ frontLeft.configNominalOutputForward(0, 30);
 frontLeft.configNominalOutputReverse(0, 30);
 frontLeft.configPeakOutputForward(1, 30);
 frontLeft.configPeakOutputReverse(-1, 30);
+frontLeft.configClosedloopRamp(.1);
         
 
 
@@ -88,6 +89,7 @@ backLeft.configNominalOutputForward(0, 30);
 backLeft.configNominalOutputReverse(0, 30);
 backLeft.configPeakOutputForward(1, 30);
 backLeft.configPeakOutputReverse(-1, 30);
+backLeft.configClosedloopRamp(.1);
         
 
 
@@ -109,7 +111,7 @@ frontRight.configNominalOutputForward(0, 30);
 frontRight.configNominalOutputReverse(0, 30);
 frontRight.configPeakOutputForward(1, 30);
 frontRight.configPeakOutputReverse(-1, 30);
-        
+frontRight.configClosedloopRamp(.1);      
 
 
 backRight = new WPI_TalonFX(4);
@@ -126,6 +128,7 @@ backRight.configNominalOutputForward(0, 30);
 backRight.configNominalOutputReverse(0, 30);
 backRight.configPeakOutputForward(1, 30);
 backRight.configPeakOutputReverse(-1, 30);
+backRight.configClosedloopRamp(.1);
         
 
 

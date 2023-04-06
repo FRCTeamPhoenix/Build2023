@@ -182,12 +182,12 @@ balance.whileTrue(new Charge(m_gyro, m_driveTrain).withInterruptBehavior(Interru
 //                         SmartDashboard.putData("btn_turnRight",new TurnDegreesPID(-90, m_driveTrain, m_gyro));
 
 final JoystickButton btn_highCube = new JoystickButton(xbox_operator, XboxController.Button.kLeftStick.value);        
-btn_highCube.whileTrue(new ArmMove(-58, 50, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+btn_highCube.whileTrue(new HighCube(-58, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
                         SmartDashboard.putData("btn_midScore",new ArmMove(-58, 50, m_arm));
 //for cone
 
 final JoystickButton btn_midScore = new JoystickButton(xbox_operator, XboxController.Button.kRightStick.value);        
-btn_midScore.whileTrue(new ArmMove(-48, 50, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+btn_midScore.whileTrue(new MidScore(-48, m_arm).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
                         SmartDashboard.putData("btn_highCube",new ArmMove(-48, 50, m_arm));
 
 SmartDashboard.putData("TurnDegreesPIDRight",new TurnDegreesPID(90, m_driveTrain, m_gyro));
