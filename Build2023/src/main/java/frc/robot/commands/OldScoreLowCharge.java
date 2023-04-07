@@ -48,12 +48,13 @@ public class OldScoreLowCharge extends SequentialCommandGroup {
         new LowerToPosition(position, arm),
         new IntakeControl(-0.7, intake).withTimeout(0.7),
         new IntakeControl(0, intake),
-        new DriveDistanceTest(10.0, 0.8, drivetrain),
+        // new DriveDistanceTest(10.0, 0.8, drivetrain),
         Commands.parallel(
             new TurnDegreesPID(180, drivetrain, gyro).withTimeout(3),
             new ArmMove(0, 0, arm)
         ),
-        new DriveDistanceTest(30.0, -0.8, drivetrain),
+        new ResetDrive(drivetrain).withTimeout(2),
+        new DriveDistanceTest(50.0, -0.8, drivetrain),
         new Charge(gyro,drivetrain).withTimeout(9)
         );
     }

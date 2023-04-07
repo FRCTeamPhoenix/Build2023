@@ -48,12 +48,14 @@ public class OldCubeHighCharge extends SequentialCommandGroup {
         new ArmMove(position,50, arm),
         new IntakeControl(-0.7, intake).withTimeout(0.7),
         new IntakeControl(0, intake),
-        //new DriveDistanceTest(5.0, 0.8, drivetrain),
+        // new DriveDistanceTest(2.0, 0.8, drivetrain),
+        // new ResetDrive(drivetrain).withTimeout(1),
         Commands.parallel(
             new TurnDegreesPID(180, drivetrain, gyro).withTimeout(3),
             new ArmMove(0, 0, arm).withTimeout(3)
         ),
-        new DriveDistanceTest(40.0, -0.8, drivetrain),
+        new ResetDrive(drivetrain).withTimeout(2),
+        new DriveDistanceTest(50.0, -0.8, drivetrain),
         new Charge(gyro,drivetrain).withTimeout(9)
         );
     }
