@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.event.EventLoop;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.ArmMove;
+import frc.robot.commands.IntakeControl;
 import frc.robot.commands.ResetArm;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.cameraserver.CameraServer;
@@ -92,6 +93,12 @@ public class Robot extends TimedRobot {
         }
         if (m_robotContainer.getxbox_operator().getPOV() == 180) {
             m_robotContainer.getArm().toCubePosition();
+        }
+        if (m_robotContainer.getxbox_operator().getRightTriggerAxis() > 0.2) {
+            new IntakeControl(-0.4, m_intake);
+        }
+        else {
+            new IntakeControl(0, m_intake);
         }
     }
 
