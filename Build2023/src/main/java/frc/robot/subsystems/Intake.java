@@ -95,7 +95,7 @@ sm_motor_right.burnFlash();
         setIntakeSpeed(0);
     }
     public void shootCube() {
-        setIntakeSpeed(d_eject_speed);
+        setIntakeSpeed(-0.4);
     }
 }
 

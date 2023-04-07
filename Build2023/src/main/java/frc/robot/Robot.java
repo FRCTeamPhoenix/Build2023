@@ -95,10 +95,10 @@ public class Robot extends TimedRobot {
             m_robotContainer.getArm().toCubePosition();
         }
         if (m_robotContainer.getxbox_operator().getRightTriggerAxis() > 0.2) {
-            new IntakeControl(-0.4, m_intake);
+            m_intake.shootCube();
         }
         else {
-            new IntakeControl(0, m_intake);
+            m_intake.intakeStop();
         }
     }
 
