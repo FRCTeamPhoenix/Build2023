@@ -185,7 +185,7 @@ drive.setMaxOutput(1.0);
     public void Drive(double Speed, double Rotation){
       //m_turbo is set if the driver is pulling the Right 
         if (!m_turbo) {
-            Speed = Speed / 2;
+            //Speed = Speed / 2;
             frontRight.setNeutralMode(NeutralMode.Brake);
             frontLeft.setNeutralMode(NeutralMode.Brake);
             backRight.setNeutralMode(NeutralMode.Brake);
@@ -197,7 +197,12 @@ drive.setMaxOutput(1.0);
           backRight.setNeutralMode(NeutralMode.Coast);
           backLeft.setNeutralMode(NeutralMode.Coast);
         }
-        drive.curvatureDrive(Speed, Rotation, !m_turbo);
+
+        //Drive team training wheels mode
+        Speed = Speed / 5;
+        //Rotation = Rotation / 5;
+        //drive.curvatureDrive(Speed, Rotation, !m_turbo);
+        drive.curvatureDrive(Speed, Rotation, false);
     }
 
     // Put methods for controlling this subsystem

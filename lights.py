@@ -22,7 +22,7 @@ Colors = {
 "off" : (0,0,0)
 }
 
-thingAmaBobPattern = ["red","off","off","red_orange","red_orange",,"red_orange",,"red_orange",,"red_orange","off","off"]
+thingAmaBobPattern = ["red","off","off","red_orange","red_orange","red_orange","red_orange","red_orange","off","off"]
 
 #Server
 Server = "10.23.42.2"
@@ -86,11 +86,12 @@ while True:
 
 		nt_color = ColorTable.getString("color","team")
 		if (nt_color == "team"):
-			team_color()
+			# team_color()
+			fire_effect()
 		else:
 			dots.fill(Colors[nt_color])
 
-		time.sleep(.1)
+		time.sleep(.05)
 	except KeyboardInterrupt:
 		exit()
 	except Exception as e:
