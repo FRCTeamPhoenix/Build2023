@@ -94,12 +94,12 @@ public class Robot extends TimedRobot {
         if (m_robotContainer.getxbox_operator().getPOV() == 180) {
             m_robotContainer.getArm().toCubePosition();
         }
-        if (m_robotContainer.getxbox_operator().getRightTriggerAxis() > 0.2) {
+  /*      if (m_robotContainer.getxbox_operator().getRightTriggerAxis() > 0.2) {
             m_intake.shootCube();
         }
         else {
             m_intake.intakeStop();
-        }
+        }*/
     }
 
 
